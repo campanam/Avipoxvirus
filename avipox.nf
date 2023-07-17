@@ -4,7 +4,7 @@ nextflow.enable.dsl=2
 
 process removeAdapters {
 
-	// This process removes adapters using AdapterRemoval 2.3.2
+	// This process removes adapters using AdapterRemoval 2.3.3
 	
 	input:
 	tuple val(library), path(reads1), path(reads2), val(adapter1), val(adapter2)
@@ -21,8 +21,8 @@ process removeAdapters {
 
 process deduplicateReads {
 
-	// Convert to FASTA using SeqtKk 1.2-r94
-	// Remove duplicates using CD-HIT v. 4.6
+	// Convert to FASTA using SeqTK 1.4
+	// Remove duplicates using CD-HIT v. 4.8.1
 	
 	input:
 	path(reads)
