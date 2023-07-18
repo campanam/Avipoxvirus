@@ -89,7 +89,7 @@ process getSequences {
 	
 	output:
 	path "${lca.simpleName}.count.txt", emit: samples_count
-	path "${rma6.simpleName}.avi.fa" optional true
+	path "${rma6.simpleName}.avi.fa", optional true
 	
 	"""
 	readcount=`grep -c ${params.taxon} $lca`
