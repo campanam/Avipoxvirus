@@ -112,6 +112,7 @@ process summarizeHits {
 	path "${params.outstem}_summary.csv"
 	
 	"""
+	#!/usr/bin/env bash
 	echo Library,Hits > ${params.outstem}_summary.csv
 	for lib in *.count.txt; do cat \$lib >> ${params.outstem}_summary.csv; done
 	"""
