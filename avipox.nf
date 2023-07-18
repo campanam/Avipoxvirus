@@ -68,8 +68,7 @@ process blast2rmalca {
 	tuple path(blast_fa), path(blast_xml)
 	
 	output:
-	path "${blast_xml.simpleName}.rma6"
-	path "${blast_xml.simpleName}.lca.txt"
+	tuple path "${blast_xml.simpleName}.rma6", path "${blast_xml.simpleName}.lca.txt"
 	
 	"""
 	blast2rma -i $blast_xml -f BlastXML -bm BlastN -r $blast_fa -o ${blast_xml.simpleName}.rma6
@@ -78,6 +77,26 @@ process blast2rmalca {
 
 }
 
+process getSequences {
+
+	// Count number of BLAST hits using grep -c (counts lines NOT number of matches per lines)
+	// Extract reads that align to target taxon using MEGAN-CE read-extractor utility
+	
+	input:
+	tuple path(rma6), path(lca)
+	
+	output:
+	path "${lca.simpleName}.count.txt"
+	path "${rma6.simpleName}.avi.fa" optional true
+	
+	"""
+	readcount=`grep -c ${params.taxon} $lca`
+	echo ${lca.simpleName},\$readcount > ${lca.simpleName}.count.txt
+	if [ \$readcount -gt 0 ]; then read-extractor -i $rma6 -o ${rma6.simpleName}.avi.fa -C Taxonomy -n ${params.taxon} -b; fi
+	"""
+
+}
+
 workflow {
-	channel.fromPath(params.inputCsv).splitCsv(header:true).map { row -> tuple(row.Library, file(params.readsdir + row.Read1), file(params.readsdir + row.Read2), row.Adapter1, row.Adapter2)} | removeAdapters | deduplicateReads | blastReads | blast2rmalca
+	channel.fromPath(params.inputCsv).splitCsv(header:true).map { row -> tuple(row.Library, file(params.readsdir + row.Read1), file(params.readsdir + row.Read2), row.Adapter1, row.Adapter2)} | removeAdapters | deduplicateReads | blastReads | blast2rmalca | getSequences
 }
