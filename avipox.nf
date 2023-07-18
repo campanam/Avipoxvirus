@@ -92,6 +92,7 @@ process getSequences {
 	path "${rma6.simpleName}.avi.fa", optional: true
 	
 	"""
+	#!/usr/bin/env bash
 	readcount=`grep -c ${params.taxon} $lca`
 	echo ${lca.simpleName},\$readcount > ${lca.simpleName}.count.txt
 	if [ \$readcount -gt 0 ]; then read-extractor -i $rma6 -o ${rma6.simpleName}.avi.fa -c Taxonomy -n ${params.taxon} -b; fi
