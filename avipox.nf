@@ -76,7 +76,7 @@ process blast2rmalca {
 	"""
 
 }
-
+/*
 process getSequences {
 
 	// Count number of BLAST hits using grep -c (counts lines NOT number of matches per lines)
@@ -95,8 +95,8 @@ process getSequences {
 	if [ \$readcount -gt 0 ]; then read-extractor -i $rma6 -o ${rma6.simpleName}.avi.fa -C Taxonomy -n ${params.taxon} -b; fi
 	"""
 
-}
+}*/
 
 workflow {
-	channel.fromPath(params.inputCsv).splitCsv(header:true).map { row -> tuple(row.Library, file(params.readsdir + row.Read1), file(params.readsdir + row.Read2), row.Adapter1, row.Adapter2)} | removeAdapters | deduplicateReads | blastReads | blast2rmalca | getSequences
+	channel.fromPath(params.inputCsv).splitCsv(header:true).map { row -> tuple(row.Library, file(params.readsdir + row.Read1), file(params.readsdir + row.Read2), row.Adapter1, row.Adapter2)} | removeAdapters | deduplicateReads | blastReads | blast2rmalca //| getSequences
 }
