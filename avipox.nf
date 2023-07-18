@@ -82,6 +82,8 @@ process getSequences {
 	// Count number of BLAST hits using grep -c (counts lines NOT number of matches per lines)
 	// Extract reads that align to target taxon using MEGAN-CE read-extractor utility
 	
+	publishDir "$params.outdir/03_BlastHits", mode: 'copy', pattern: '*avi.fa'
+	
 	input:
 	tuple path(rma6), path(lca)
 	
@@ -92,11 +94,32 @@ process getSequences {
 	"""
 	readcount=`grep -c ${params.taxon} $lca`
 	echo ${lca.simpleName},\$readcount > ${lca.simpleName}.count.txt
-	if [ \$readcount -gt 0 ]; then read-extractor -i $rma6 -o ${rma6.simpleName}.avi.fa -C Taxonomy -n ${params.taxon} -b; fi
+	if [ \$readcount -gt 0 ]; then read-extractor -i $rma6 -o ${rma6.simpleName}.avi.fa -c Taxonomy -n ${params.taxon} -b; fi
 	"""
 
 }
 
+process summarizeHits {
+
+	// Generate a summary table of BLAST hits
+	
+	publishDir "$params.outdir/04_Summary", mode: 'copy'
+	
+	input:
+	path("*")
+	
+	output:
+	path "${params.outstem}_summary.csv"
+	
+	"""
+	echo Library,Hits > ${params.outstem}_summary.csv
+	for lib in *.count.txt; do cat \$lib >> ${params.outstem}_summary.csv; done
+	"""
+	
+}
+	
+
 workflow {
 	channel.fromPath(params.inputCsv).splitCsv(header:true).map { row -> tuple(row.Library, file(params.readsdir + row.Read1), file(params.readsdir + row.Read2), row.Adapter1, row.Adapter2)} | removeAdapters | deduplicateReads | blastReads | blast2rmalca | getSequences
+	summarizeHits( getSequences.out.collect() )
 }
