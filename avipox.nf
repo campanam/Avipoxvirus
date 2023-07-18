@@ -106,7 +106,7 @@ process summarizeHits {
 	publishDir "$params.outdir/04_Summary", mode: 'copy'
 	
 	input:
-	path("*")
+	path(files)
 	
 	output:
 	path "${params.outstem}_summary.csv"
