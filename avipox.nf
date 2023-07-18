@@ -88,7 +88,7 @@ process getSequences {
 	tuple path(rma6), path(lca)
 	
 	output:
-	path "${lca.simpleName}.count.txt"
+	path "${lca.simpleName}.count.txt", emit: samples_count
 	path "${rma6.simpleName}.avi.fa" optional true
 	
 	"""
@@ -121,5 +121,5 @@ process summarizeHits {
 
 workflow {
 	channel.fromPath(params.inputCsv).splitCsv(header:true).map { row -> tuple(row.Library, file(params.readsdir + row.Read1), file(params.readsdir + row.Read2), row.Adapter1, row.Adapter2)} | removeAdapters | deduplicateReads | blastReads | blast2rmalca | getSequences
-	summarizeHits( getSequences.out.collect() )
+	summarizeHits( getSequences.out.samples_count.collect() )
 }
