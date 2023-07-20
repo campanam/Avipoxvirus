@@ -32,7 +32,7 @@ process deduplicateReads {
 	
 	"""
 	seqtk seq -A $reads > ${reads.simpleName}.collapsed.fa
-	cd-hit-est -c 1 -i ${reads.simpleName}.collapsed.fa -o ${reads.simpleName}.collapsed.uniq.fa
+	cd-hit-est -c 1 -M 0 -i ${reads.simpleName}.collapsed.fa -o ${reads.simpleName}.collapsed.uniq.fa
 	"""
 
 }
