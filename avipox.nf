@@ -89,7 +89,7 @@ process getSequences {
 	
 	output:
 	path "${lca.simpleName}.count.txt", emit: samples_count
-	path "${rma6.simpleName}.avi.fa", optional: true
+	path "${rma6.simpleName}.avi.fa", emit: avi_fa, optional: true
 	
 	"""
 	#!/usr/bin/env bash
@@ -119,9 +119,30 @@ process summarizeHits {
 	"""
 	
 }
+
+process ntBlastReads {
+
+	// Blast uniqued reads against nt database
 	
+	publishDir "$params.outdir/05_NtBlastResults", mode: 'copy'
+	
+	input:
+	path(uniq_reads)
+	
+	output:
+	tuple path("$uniq_reads"), path("${uniq_reads.baseName}.xml")
+	
+	"""
+	blastn -db ${params.ntdb} -query $uniq_reads -out ${uniq_reads.baseName}.xml -outfmt 5
+	"""
+
+}
 
 workflow {
 	channel.fromPath(params.inputCsv).splitCsv(header:true).map { row -> tuple(row.Library, file(params.readsdir + row.Read1), file(params.readsdir + row.Read2), row.Adapter1, row.Adapter2)} | removeAdapters | deduplicateReads | blastReads | blast2rmalca | getSequences
 	summarizeHits( getSequences.out.samples_count.collect() )
+}
+
+workflow {
+	ntBlastReads ( getSequences.out.avi.fa ) | blast2rmalca | getSequences
 }
