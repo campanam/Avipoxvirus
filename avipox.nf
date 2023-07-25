@@ -149,6 +149,8 @@ workflow blast1 {
 }
 
 workflow blast2 {
+	take:
+		avi_fa
 	main:
 		ntBlastReads(avi_fa) | blast2rmalca | getSequences
 }
