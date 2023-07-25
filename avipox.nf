@@ -152,5 +152,5 @@ workflow blast2 {
 workflow {
 	main:
 		blast1
-		blast2(blast1.out.avi_fa)
+		//blast2(blast1.out.avi_fa)
 }
