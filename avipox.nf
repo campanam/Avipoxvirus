@@ -138,8 +138,19 @@ process ntBlastReads {
 
 }
 
+workflow blast1 {
+	main:
+		channel.fromPath(params.inputCsv).splitCsv(header:true).map { row -> tuple(row.Library, file(params.readsdir + row.Read1), file(params.readsdir + row.Read2), row.Adapter1, row.Adapter2)} | removeAdapters | deduplicateReads | blastReads | blast2rmalca | getSequences
+		summarizeHits( getSequences.out.samples_count.collect() )
+	emit:
+		avi_fa = getSequences.out.avi_fa
+}
+workflow blast2 {
+	main:
+		ntBlastReads(avi_fa) | blast2rmalca | getSequences
+}
 workflow {
-	channel.fromPath(params.inputCsv).splitCsv(header:true).map { row -> tuple(row.Library, file(params.readsdir + row.Read1), file(params.readsdir + row.Read2), row.Adapter1, row.Adapter2)} | removeAdapters | deduplicateReads | blastReads | blast2rmalca | getSequences
-	summarizeHits( getSequences.out.samples_count.collect() )
-	ntBlastReads ( getSequences.out.avi_fa ) | blast2rmalca | getSequences
+	main:
+		blast1
+		blast2(blast1.out)
 }
