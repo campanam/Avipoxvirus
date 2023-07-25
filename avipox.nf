@@ -141,5 +141,5 @@ process ntBlastReads {
 workflow {
 	channel.fromPath(params.inputCsv).splitCsv(header:true).map { row -> tuple(row.Library, file(params.readsdir + row.Read1), file(params.readsdir + row.Read2), row.Adapter1, row.Adapter2)} | removeAdapters | deduplicateReads | blastReads | blast2rmalca | getSequences
 	summarizeHits( getSequences.out.samples_count.collect() )
-	ntBlastReads ( getSequences.out.avi.fa ) | blast2rmalca | getSequences
+	ntBlastReads ( getSequences.out.avi_fa ) | blast2rmalca | getSequences
 }
