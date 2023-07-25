@@ -89,7 +89,7 @@ process getSequences {
 	
 	output:
 	path "${lca.simpleName}.count.txt", emit: samples_count
-	path "${rma6.simpleName}.avi.fa", emit: avi_fa, optional: true
+	path "${rma6.simpleName}_avi.fa", emit: avi_fa, optional: true
 	
 	"""
 	#!/usr/bin/env bash
@@ -138,6 +138,26 @@ process ntBlastReads {
 
 }
 
+process summarizeNtHits {
+
+	// Generate a summary table of nt BLAST hits
+	
+	publishDir "$params.outdir/06_NtSummary", mode: 'copy'
+	
+	input:
+	path(files)
+	
+	output:
+	path "${params.outstem}_nt_summary.csv"
+	
+	"""
+	#!/usr/bin/env bash
+	echo Library,Hits > ${params.outstem}_nt_summary.csv
+	for lib in *.count.txt; do cat \$lib >> ${params.outstem}_nt_summary.csv; done
+	"""
+	
+}
+
 workflow blast1 {
 	take:
 		data
@@ -152,7 +172,7 @@ workflow blast2 {
 	take:
 		avi_fa
 	main:
-		ntBlastReads(avi_fa) | blast2rmalca | getSequences
+		ntBlastReads(avi_fa) | blast2rmalca | getSequences | summarizeNtHits
 }
 
 workflow {
