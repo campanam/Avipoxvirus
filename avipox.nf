@@ -138,8 +138,6 @@ process ntBlastReads {
 
 }
 
-data = channel.fromPath(params.inputCsv).splitCsv(header:true).map { row -> tuple(row.Library, file(params.readsdir + row.Read1), file(params.readsdir + row.Read2), row.Adapter1, row.Adapter2)}
-
 workflow blast1 {
 	take:
 		data
@@ -157,7 +155,7 @@ workflow blast2 {
 
 workflow {
 	take:
-		data
+		data = channel.fromPath(params.inputCsv).splitCsv(header:true).map { row -> tuple(row.Library, file(params.readsdir + row.Read1), file(params.readsdir + row.Read2), row.Adapter1, row.Adapter2)}
 	main:
 		blast1(data)
 		blast2(blast1.out.avi_fa)
