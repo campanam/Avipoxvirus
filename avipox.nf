@@ -71,7 +71,7 @@ process blast2rmalca {
 	tuple path("${blast_xml.simpleName}.rma6"), path("${blast_xml.simpleName}.lca.txt")
 	
 	"""
-	blast2rma -i $blast_xml -f BlastXML -bm BlastN -r $blast_fa -o ${blast_xml.simpleName}.rma6
+	blast2rma -i $blast_xml -f BlastXML -bm BlastN -r $blast_fa -supp 0 -o ${blast_xml.simpleName}.rma6
 	blast2lca -i $blast_xml -f BlastXML -m BlastN -o ${blast_xml.simpleName}.lca.txt
 	"""
 
