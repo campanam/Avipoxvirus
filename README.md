@@ -3,7 +3,7 @@
 Michael G. Campana and Madeline W. Eibner-Gebhardt, 2023-2024  
 Smithsonian's National Zoo and Conservation Biology Institute  
 
-Pipeline to identify *Avipoxivirus* sequences in DNA libraries  
+Pipeline to identify *Avipoxvirus* sequences in DNA libraries  
 
 ## Citation  
 Eibner-Gehbardt MW, Fleischer RC, Campana MG. In prep. A historical Hawaiian Avipoxvirus genome reconstructed from an 1898 museum specimen.  
