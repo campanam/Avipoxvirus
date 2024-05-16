@@ -11,7 +11,9 @@ Eibner-Gehbardt MW, Fleischer RC, Campana MG. In prep. A historical Hawaiian Avi
 # Input  
 The pipeline requires a directory of bidirectionally sequenced DNA libraries in FASTQ format. The pipeline expects the forward and reverse reads in separate files. Second, the pipeline requires a CSV file assigning the read files to libraries with the following format:  
 
-
+Library,Read1,Read2,Adapter1,Adapter2  
+\<library1 name>\,\<path to library1 read1\>,\<path to library1 read2\>,\<library1 adapter1 sequence\>,\<library1 adapter2 sequence\>  
+\<library2 name>\,\<path to library2 read1\>,\<path to library2 read2\>,\<library2 adapter1 sequence\>,\<library2 adapter2 sequence\>  
 
 # Installation  
 The pipeline requires [Nextflow](https://www.nextflow.io/). The pipeline can automatically install the dependencies using [Conda](https://conda.io). After installing Nextflow and Conda, install the pipeline with the command:  
