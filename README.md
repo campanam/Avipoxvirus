@@ -9,6 +9,7 @@ Pipeline to identify *Avipoxvirus* sequences in DNA libraries
 Eibner-Gehbardt MW, Fleischer RC, Campana MG. In prep. A historical Hawaiian Avipoxvirus genome reconstructed from an 1898 museum specimen.  
 
 ## License  
+The software is made available under the Smithsonian Institution [terms of use](https://www.si.edu/termsofuse).  
 
 ## Input  
 The pipeline requires a directory of bidirectionally sequenced DNA libraries in FASTQ format. The pipeline expects the forward and reverse reads in separate files. Second, the pipeline requires a CSV file assigning the read files to libraries with the following format:  
