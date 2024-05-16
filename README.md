@@ -28,6 +28,9 @@ CD-HIT v. 4.8.1 [(3)](https://sites.google.com/view/cd-hit)
 BLAST+ v. 2.13.0 [(4)](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html)  
 MEGAN - Community Edition v. 6.24.20 [(5)](https://github.com/husonlab/megan-ce)  
 
+# Pipeline Configuration  
+A profile providing 
+
 # References  
 1. Schubert M, Lindgreen S, Orlando L. 2016. AdapterRemoval v2: rapid adapter trimming, identification, and read merging. *BMC Research Notes*. __9__: 88.  
 2. Li H. 2023. Seqtk v. 1.4. Available: https://github.com/lh3/seqtk.  
