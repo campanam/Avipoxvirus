@@ -49,6 +49,10 @@ taxon: Taxon to search for in MEGAN LCA files
 Enter the command:  
 `nextflow run campanam/Avipoxvirus -r main -c <your config file>`  
 
+## Output  
+The pipeline will create the and populate the following output subdirectories:  
+
+
 ## References  
 1. Schubert M, Lindgreen S, Orlando L. 2016. AdapterRemoval v2: rapid adapter trimming, identification, and read merging. *BMC Research Notes*. __9__: 88.  
 2. Li H. 2023. Seqtk v. 1.4. Available: https://github.com/lh3/seqtk.  
