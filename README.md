@@ -29,7 +29,11 @@ BLAST+ v. 2.13.0 [(4)](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadbla
 MEGAN - Community Edition v. 6.24.20 [(5)](https://github.com/husonlab/megan-ce)  
 
 # Pipeline Configuration  
-A profile providing 
+A profile ('hydra') describing the configuration and Conda recipes used in Eibner-Gebhardt et al. is included in the `nextflow.config` file included in this repository. Please consult the Nextflow documentation to configure the pipeline for your system.  
+
+Configurable parameters needed for the pipeline are:
+
+
 
 # References  
 1. Schubert M, Lindgreen S, Orlando L. 2016. AdapterRemoval v2: rapid adapter trimming, identification, and read merging. *BMC Research Notes*. __9__: 88.  
