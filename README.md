@@ -52,6 +52,12 @@ Enter the command:
 ## Output  
 The pipeline will create the and populate the following output subdirectories:  
 
+01_BlastResults: Unique, merged sequences in FASTA format and their BLAST results against the custom *Avipoxvirus* database in XML format.  
+02_RMA_LCA: MEGAN RMA6 and LCA files derived from BLAST XML results. Files derived from the second BLAST step against the nt database will have '_avi' appended before the file suffix (either .lca.txt or .rma6).  
+03_BlastHits: Reads that match *Avipoxvirus* in the first round of BLAST analysis in FASTA format.  
+04_Summary: A summary file of the number of *Avipoxvirus* hits per library after the first round of BLAST assignment.  
+05_NtBlastResults: BLAST results in XML format after secondary assignment against nt database.  
+06_NtSummary: A summary file of the number of *Avipoxvirus* hits per library after the second round of BLAST assignment.  
 
 ## References  
 1. Schubert M, Lindgreen S, Orlando L. 2016. AdapterRemoval v2: rapid adapter trimming, identification, and read merging. *BMC Research Notes*. __9__: 88.  
