@@ -8,6 +8,11 @@ Pipeline to identify *Avipoxivirus* sequences in DNA libraries
 # Citation  
 Eibner-Gehbardt MW, Fleischer RC, Campana MG. In prep. A historical Hawaiian Avipoxvirus genome reconstructed from an 1898 museum specimen.  
 
+# Input  
+The pipeline requires a directory of bidirectionally sequenced DNA libraries in FASTQ format. The pipeline expects the forward and reverse reads in separate files. Second, the pipeline requires a CSV file assigning the read files to libraries with the following format:  
+
+
+
 # Installation  
 The pipeline requires [Nextflow](https://www.nextflow.io/). The pipeline can automatically install the dependencies using [Conda](https://conda.io). After installing Nextflow and Conda, install the pipeline with the command:  
 `nextflow pull campanam/Avipoxvirus -r main`  
@@ -15,11 +20,11 @@ The pipeline requires [Nextflow](https://www.nextflow.io/). The pipeline can aut
 # Dependencies  
 If you cannot install the dependencies automatically using the Conda, please install the following software packages:  
 
-AdapterRemoval v. 2.3.3 [1](https://github.com/MikkelSchubert/adapterremoval)  
-Seqtk v. 1.4 [2](https://github.com/lh3/seqtk)  
-CD-HIT v. 4.8.1 [3](https://sites.google.com/view/cd-hit)  
-BLAST+ v. 2.13.0 [4](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html)  
-MEGAN - Community Edition v. 6.24.20 [5](https://github.com/husonlab/megan-ce)  
+AdapterRemoval v. 2.3.3 [(1)](https://github.com/MikkelSchubert/adapterremoval)  
+Seqtk v. 1.4 [(2)](https://github.com/lh3/seqtk)  
+CD-HIT v. 4.8.1 [(3)](https://sites.google.com/view/cd-hit)  
+BLAST+ v. 2.13.0 [(4)](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html)  
+MEGAN - Community Edition v. 6.24.20 [(5)](https://github.com/husonlab/megan-ce)  
 
 # References  
 1. Schubert M, Lindgreen S, Orlando L. 2016. AdapterRemoval v2: rapid adapter trimming, identification, and read merging. *BMC Research Notes*. __9__: 88.  
