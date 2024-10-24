@@ -202,6 +202,8 @@ workflow blast2 {
 	main:
 		ntBlastReads(avi_fa) | blast2rmalca | getSequences
 		summarizeNtHits( getSequences.out.samples_count.collect() )
+	 emit:
+		avi_fa = getSequences.out.avi_fa
 
 }
 
