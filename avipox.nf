@@ -158,6 +158,34 @@ process summarizeNtHits {
 	
 }
 
+process profileDamage {
+
+	// Profile DNA damage
+	
+	publishDir "$params.outdir/07_DamgeProfiles", mode: 'copy', pattern: "*_damage/*.*"
+	publishDir "$params.outdir/07_DamgeProfiles", mode: 'copy', pattern: "*.mrkdup.bam"
+	
+	input:
+	path(reads)
+	path(refseq)
+	
+	output:
+	path "${reads.baseName}.mrkdup.bam"
+	path "${reads.baseName}_damage/*pdf"
+	path "${reads.baseName}_damage/*txt"
+	path "${reads.baseName}_damage/*log"
+	
+	
+	"""
+	bwa index ${refseq}
+	bwa samse -r '@RG\tID:${reads.baseName}\tID:${reads.baseName}\tLB:ILLUMINA\tPL:ILLUMINA' ${refseq} <(bwa aln -l 1024 ${refseq} ${reads}) ${reads} | samtools fixmate -m - - | samtools sort -o ${reads.baseName}.bam -
+	gatk LeftAlignIndels -R ${refseq} -I ${reads.baseName}.bam -O ${reads.baseName}.realn.bam --disable-read-filter WellformedReadFilter
+	samtools markdup ${reads.baseName}.realn.bam ${reads.baseName}.mrkdup.bam
+	damageprofiler -i ${reads.baseName}.mrkdup.bam -O ${reads.baseName}_damage -r ${refseq}
+	"""
+	
+}
+
 workflow blast1 {
 	take:
 		data
@@ -174,10 +202,13 @@ workflow blast2 {
 	main:
 		ntBlastReads(avi_fa) | blast2rmalca | getSequences
 		summarizeNtHits( getSequences.out.samples_count.collect() )
+	emit:
+		avi_fa = getSequences.out.avi_fa
 }
 
 workflow {
 	main:
 		blast1(channel.fromPath(params.inputCsv).splitCsv(header:true).map { row -> tuple(row.Library, file(params.readsdir + row.Read1), file(params.readsdir + row.Read2), row.Adapter1, row.Adapter2)})
 		blast2(blast1.out.avi_fa)
+		if params.profiledamage { profileDamage(blast2.out.avi_fa, params.refseq) }
 }

@@ -45,6 +45,8 @@ readsdir: Path to directory holding raw read pairs
 outdir: Output directory
 outstem: Output file stem  
 taxon: Taxon to search for in MEGAN LCA files  
+profiledamage: Whether to run DNA damage profiling (true or false)  
+refseq: Path to reference sequence for damage profiling  
 
 ## Running the Pipeline  
 Enter the command:  
