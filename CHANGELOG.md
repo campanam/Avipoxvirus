@@ -5,6 +5,7 @@ Smithsonian's National Zoo and Conservation Biology Institute
 
 ### Version 0.2.0  
 Added damage profiling process  
+Uses Mamba by default  
 
 ### Version 0.1.0  
 First functional version  

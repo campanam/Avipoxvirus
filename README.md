@@ -21,7 +21,7 @@ Library,Read1,Read2,Adapter1,Adapter2
 Additionally, the pipeline requires access to a local copy of the NCBI non-redundant nucleotide database ('nt') as well as a custom *Avipoxvirus* genomic blast database. See Eibner-Gehbardt et al. for details on compiling the *Avipoxvirus* genome database.  
 
 ## Installation  
-The pipeline requires [Nextflow](https://www.nextflow.io/). The pipeline can automatically install the dependencies using [Conda](https://conda.io). After installing Nextflow and Conda, install the pipeline with the command:  
+The pipeline requires [Nextflow](https://www.nextflow.io/). The pipeline can automatically install the dependencies using [Conda](https://conda.io) or [Mamba](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html). After installing Nextflow and Conda/Mamba, install the pipeline with the command:  
 `nextflow pull campanam/Avipoxvirus -r main`  
 
 ## Dependencies  
