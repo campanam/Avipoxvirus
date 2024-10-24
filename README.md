@@ -25,7 +25,7 @@ The pipeline requires [Nextflow](https://www.nextflow.io/). The pipeline can aut
 `nextflow pull campanam/Avipoxvirus -r main`  
 
 ## Dependencies  
-If you cannot install the dependencies automatically using the Conda, please install the following software packages:  
+If you cannot install the dependencies automatically using Conda, please install the following software packages:  
 
 AdapterRemoval v. 2.3.3 [(1)](https://github.com/MikkelSchubert/adapterremoval)  
 Seqtk v. 1.4 [(2)](https://github.com/lh3/seqtk)  
