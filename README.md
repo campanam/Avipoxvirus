@@ -60,7 +60,7 @@ Enter the command:
 `nextflow run campanam/Avipoxvirus -r main -c <your config file>`  
 
 ## Output  
-The pipeline will create the and populate the following output subdirectories:  
+The pipeline will create and populate the following output subdirectories:  
 
 01_BlastResults: Unique, merged sequences in FASTA format and their BLAST results against the custom *Avipoxvirus* database in XML format.  
 02_RMA_LCA: MEGAN RMA6 and LCA files derived from BLAST XML results. Files derived from the second BLAST step against the nt database will have '_avi' appended before the file suffix (either .lca.txt or .rma6).  
