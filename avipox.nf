@@ -162,8 +162,8 @@ process profileDamage {
 
 	// Profile DNA damage
 	
-	publishDir "$params.outdir/07_DamgeProfiles", mode: 'copy', pattern: "*_damage/*.*"
-	publishDir "$params.outdir/07_DamgeProfiles", mode: 'copy', pattern: "*.mrkdup.bam"
+	publishDir "$params.outdir/07_DamageProfiles", mode: 'copy', pattern: "*_damage/*.*"
+	publishDir "$params.outdir/07_DamageProfiles", mode: 'copy', pattern: "*.mrkdup.bam"
 	
 	input:
 	path(reads)
