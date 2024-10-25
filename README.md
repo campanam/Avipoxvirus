@@ -1,4 +1,5 @@
 # Avipoxvirus
+<img align="right" src="DSC_0116.jpg" width="100"> 
 
 Michael G. Campana and Madeline W. Eibner-Gebhardt, 2023-2024  
 Smithsonian's National Zoo and Conservation Biology Institute  
@@ -80,3 +81,5 @@ The pipeline will create and populate the following output subdirectories:
 7. Danecek P, Bonfield JK, Liddle J, Marshall J, Ohan V, Pollard MO, Whitwham A, Keane T, McCarthy SA, Davies RM, Li H. 2021. Twelves years of SAMtools and BCFtools. *GigaScience*. __10__: giab008.  
 8. McKenna A, Hanna M, Banks E, Sivachenko A, Cibulskis K, Kernytsky A, Garimella K, Altshuler D, Gabriel S, Daly M, DePristo MA. 2010. The Genome Analysis Toolkit: a MapReduce framework for analyzing next-generation DNA sequencing data. *Genome Research*. __20__: 1297-1303. 
 9. Neukamm J, Peltzer A, Nieselt K. 2021. DamageProfiler: fast damage pattern calculation for ancient DNA. *Bioinformatics*. __37__: 3652–3653.  
+
+## Image Credit: Loren Cassin-Sackett. 2014. Hawaii 'amakihi with *Avipoxvirus* lesion. Used with permission of the photographer.  
