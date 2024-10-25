@@ -33,6 +33,13 @@ CD-HIT v. 4.8.1 [(3)](https://sites.google.com/view/cd-hit)
 BLAST+ v. 2.13.0 [(4)](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html)  
 MEGAN - Community Edition v. 6.24.20 [(5)](https://github.com/husonlab/megan-ce)  
 
+If you wish to run damage profiling, you will also need to install the following packages:  
+
+BWA v. 0.7.17 [(6)]
+SAMtools v. 1.18 [(7)]
+Genome Analysis Toolkit v. 4.4.0.0 [(8)]
+DamgeProfiler v. 1.1 [(9)]
+
 ## Pipeline Configuration  
 We recommend copying and modifying the `nextflow.config` file included in this directory. A profile ('hydra') describing the configuration and Conda recipes used in Eibner-Gebhardt et al. is included in the `nextflow.config` file. Please consult the Nextflow documentation to configure the pipeline for your system.  
 
@@ -61,6 +68,7 @@ The pipeline will create the and populate the following output subdirectories:
 04_Summary: A summary file of the number of *Avipoxvirus* hits per library after the first round of BLAST assignment.  
 05_NtBlastResults: BLAST results in XML format after secondary assignment against nt database.  
 06_NtSummary: A summary file of the number of *Avipoxvirus* hits per library after the second round of BLAST assignment.  
+07_DamageProfiles: Alignments in BAM format and DamageProfiler output for *Avipoxvirus* reads.  
 
 ## References  
 1. Schubert M, Lindgreen S, Orlando L. 2016. AdapterRemoval v2: rapid adapter trimming, identification, and read merging. *BMC Research Notes*. __9__: 88.  
@@ -68,3 +76,7 @@ The pipeline will create the and populate the following output subdirectories:
 3. Li W, Godzik A. 2006. Cd-hit: a fast program for clustering and comparing large sets of protein or nucleotide sequences. *Bioinformatics*. __22__: 1658-9.  
 4. Camacho C, Coulouris G, Avagyan V, Ma N, Papadopoulos J, Bealer K, Madden TL. 2009. BLAST+: architecture and applications. *BMC Bioinformatics*. __10__: 421.
 5. Huson DH, Beier S, Flade I, Górska M, Mitra S, Ruscheweyh H-J, Tappu R. 2016. MEGAN Community Edition - interactive exploration and analysis of large-scale microbiome sequencing data. *PLoS Computational Biology*. __12__: e1004957.  
+6. Li H, Durbin R. 2009. Fast and accurate short read alignment with Burrows-Wheeler transform. *Bioinformatics*. __25__: 1754-1760.  
+7. Danecek P, Bonfield JK, Liddle J, Marshall J, Ohan V, Pollard MO, Whitwham A, Keane T, McCarthy SA, Davies RM, Li H. 2021. Twelves years of SAMtools and BCFtools. *GigaScience*. __10__: giab008.  
+8. McKenna A, Hanna M, Banks E, Sivachenko A, Cibulskis K, Kernytsky A, Garimella K, Altshuler D, Gabriel S, Daly M, DePristo MA. 2010. The Genome Analysis Toolkit: a MapReduce framework for analyzing next-generation DNA sequencing data. *Genome Research*. __20__: 1297-1303. 
+9. Neukamm J, Peltzer A, Nieselt K. 2021. DamageProfiler: fast damage pattern calculation for ancient DNA. *Bioinformatics*. __37__: 3652–3653.  
