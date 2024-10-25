@@ -35,10 +35,10 @@ MEGAN - Community Edition v. 6.24.20 [(5)](https://github.com/husonlab/megan-ce)
 
 If you wish to run damage profiling, you will also need to install the following packages:  
 
-BWA v. 0.7.17 [(6)]
-SAMtools v. 1.18 [(7)]
-Genome Analysis Toolkit v. 4.4.0.0 [(8)]
-DamgeProfiler v. 1.1 [(9)]
+BWA v. 0.7.17 [(6)](https://bio-bwa.sourceforge.net/)  
+SAMtools v. 1.18 [(7)](https://www.htslib.org/)  
+Genome Analysis Toolkit v. 4.4.0.0 [(8)](https://gatk.broadinstitute.org/hc/en-us)  
+DamageProfiler v. 1.1 [(9)](https://damageprofiler.readthedocs.io/en/latest/)  
 
 ## Pipeline Configuration  
 We recommend copying and modifying the `nextflow.config` file included in this directory. A profile ('hydra') describing the configuration and Conda recipes used in Eibner-Gebhardt et al. is included in the `nextflow.config` file. Please consult the Nextflow documentation to configure the pipeline for your system.  
