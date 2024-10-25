@@ -1,5 +1,5 @@
 # Avipoxvirus
-<img align="right" src="DSC_0116.jpg" width="100"> 
+<img align="right" src="DSC_0116.JPG" width="100"> 
 
 Michael G. Campana and Madeline W. Eibner-Gebhardt, 2023-2024  
 Smithsonian's National Zoo and Conservation Biology Institute  
