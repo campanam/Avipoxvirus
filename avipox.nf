@@ -179,7 +179,7 @@ process profileDamage {
 	"""
 	bwa index ${refseq}
 	samtools faidx ${refseq}
-	samtools dict ${refseq} ${refseq.simpleName}.dict
+	samtools dict ${refseq} > ${refseq.simpleName}.dict
 	bwa samse -r '@RG\\tID:${reads.baseName}\\tID:${reads.baseName}\\tLB:ILLUMINA\÷\tPL:ILLUMINA' ${refseq} <(bwa aln -l 1024 ${refseq} ${reads}) ${reads} | samtools fixmate -m - - | samtools sort -o ${reads.baseName}.bam -
 	gatk LeftAlignIndels -R ${refseq} -I ${reads.baseName}.bam -O ${reads.baseName}.realn.bam --disable-read-filter WellformedReadFilter
 	samtools markdup ${reads.baseName}.realn.bam ${reads.baseName}.mrkdup.bam
