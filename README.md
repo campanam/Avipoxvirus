@@ -82,4 +82,5 @@ The pipeline will create and populate the following output subdirectories:
 8. McKenna A, Hanna M, Banks E, Sivachenko A, Cibulskis K, Kernytsky A, Garimella K, Altshuler D, Gabriel S, Daly M, DePristo MA. 2010. The Genome Analysis Toolkit: a MapReduce framework for analyzing next-generation DNA sequencing data. *Genome Research*. __20__: 1297-1303. 
 9. Neukamm J, Peltzer A, Nieselt K. 2021. DamageProfiler: fast damage pattern calculation for ancient DNA. *Bioinformatics*. __37__: 3652–3653.  
 
-## Image Credit: Loren Cassin-Sackett. 2014. Hawaii 'amakihi with *Avipoxvirus* lesion. Used with permission of the photographer.  
+## Image Credits:  
+Loren Cassin-Sackett. 2014. Hawaii 'amakihi with *Avipoxvirus* lesion. Used with permission of the photographer.  
