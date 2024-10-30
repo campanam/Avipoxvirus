@@ -6,6 +6,8 @@ Smithsonian's National Zoo and Conservation Biology Institute
 
 Pipeline to identify *Avipoxvirus* sequences in DNA libraries  
 
+[![DOI](https://zenodo.org/badge/667565062.svg)](https://doi.org/10.5281/zenodo.14010731)
+
 ## Citation  
 Eibner-Gehbardt MW, Fleischer RC, Campana MG. In prep. A historical Hawaiian Avipoxvirus genome reconstructed from an 1898 museum specimen.  
 
